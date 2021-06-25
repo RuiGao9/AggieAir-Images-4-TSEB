@@ -1,1 +1,32 @@
+
 # AggieAir-Images-4-TSEB-PT
+## Contact
+- [Rui Gao](https://github.com/RuiGao92)
+- Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
+
+## Brief introduction:<br>
+- This python script is used for the AggieAir-image processing to support the TSEB-PT model. Details about the AggieAir platform can refer https://uwrl.usu.edu/aggieair/, and details about the TSEB-PT model can refer this repository: https://github.com/hectornieto/pyTSEB.
+- This repository is not written in a python function since the some results from some cells can help researchers to find more information, and it is easier for users to debug when apply this script for new research objectives.
+
+## Required inputs:<br>
+- `file_grids`: the folder path of the research grids (fishnet), and the resolution I used is 3.6 meter by 3.6 meter.<br>
+- `file_LAI`: the folder path of the LAI image, and the resolution is 3.6 meter by 3.6 meter.<br>
+- `file_RGBN`: the folder path of the optical image, and the resolution is 0.1 meter by 0.1 meter.<br>
+- `file_DSM`: the folder path of the DSM image, and the resolution is 0.1 meter by 0.1 meter.<br>
+- `file_tmp`: the folder path of the thermal image, and the resolution is 0.6 meter by 0.6 meter<br>
+- `threshold_veg`: this is a threshold from NDVI to define which pixel is recognized as vegetation index. This threshold varies from flight to flight, and user can get a good guess from the cell called "Generate R, G, B, NIR, and DSM images" and then re-define the threshold when you cannot get the exact threshold.<br>
+- `threshold_soil`: this is similar to above one, and this NDVI threshold is used to define the soil pixel.<br>
+- `threshold_veg_height`: the shortest height of the vegetation (vine-canopy height for my case).<br>
+- `threshold_thermal_upscale_ratio`: the ratio between the square of the LAI pixel and the square of the thermal pixel, in string format. It is "6" for my case. 
+- `resolution_grid`: the resolution for the fishnet with only one length (e.g., 3.6 meter).<br>
+- `resolution_rgb_dsm`: the resolution for the optical and DSM data.<br>
+
+## Acknokledge:<br>
+Thanks for the suggestions and guidence from [Dr. Torres](https://engineering.usu.edu/cee/people/faculty/torres-alfonso)
+
+## Citation:<br>
+Please cite the papers below when you are using this script.
+- [Evapotranspiration partitioning assessment using a machine-learning-based leaf area index and the two-source energy balance model with sUAV information](https://www.researchgate.net/publication/350820947_Evapotranspiration_partitioning_assessment_using_a_machine-learning-based_leaf_area_index_and_the_two-source_energy_balance_model_with_sUAV_information)
+- []()
+
+
