@@ -11,12 +11,12 @@
 
 ## Involved python functions:
 These involved python functions are used to extract information from the corresponding inputs. They could be found in other repositories in my GitHub. Details for each function can be found there.
-- `CanopyHeight_Vine`: canopy height at a subfield scale is generated at the end as one image.
-- `TellResolution`: resolution (2 values) is generated.
-- `TellTheGeoInfo`: (1) dimension, (2) geographic information, and (3) projection information of the input image are generated. 
-- `FolderCreater`: a python function used to generated a folder.
-- `WriteTiffData`: put required information and the array into this function, image in "Tiff" format is generated.
-- `TellExtent`: the north, south, east, and west (4 values) are gained based on the input image.
+- `CanopyHeight_Vine`: [Vine_Info_Extraction]| canopy height at a subfield scale is generated at the end as one image.
+- `TellResolution`: [Rui_Python_Functions_Package]| resolution (2 values) is generated.
+- `TellTheGeoInfo`: [Rui_Python_Functions_Package]| (1) dimension, (2) geographic information, and (3) projection information of the input image are generated. 
+- `FolderCreater`: [Rui_Python_Functions_Package]| a python function used to generated a folder.
+- `WriteTiffData`: [Rui_Python_Functions_Package]| put required information and the array into this function, image in "Tiff" format is generated.
+- `TellExtent`: [Rui_Python_Functions_Package]| the north, south, east, and west (4 values) are gained based on the input image.
 
 ## Required inputs:
 - `file_grids`: the folder path of the research grids (fishnet), and the resolution I used is 3.6 meter by 3.6 meter.<br>
