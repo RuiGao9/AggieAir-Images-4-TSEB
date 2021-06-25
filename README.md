@@ -18,7 +18,7 @@ These involved python functions are used to extract information from the corresp
 - `WriteTiffData`: put required information and the array into this function, image in "Tiff" format is generated.
 - `TellExtent`: the north, south, east, and west (4 values) are gained based on the input image.
 
-## Required inputs:<br>
+## Required inputs:
 - `file_grids`: the folder path of the research grids (fishnet), and the resolution I used is 3.6 meter by 3.6 meter.<br>
 - `file_LAI`: the folder path of the LAI image, and the resolution is 3.6 meter by 3.6 meter.<br>
 - `file_RGBN`: the folder path of the optical image, and the resolution is 0.1 meter by 0.1 meter.<br>
@@ -30,6 +30,13 @@ These involved python functions are used to extract information from the corresp
 - `threshold_thermal_upscale_ratio`: the ratio between the square of the LAI pixel and the square of the thermal pixel, in string format. It is "6" for my case. 
 - `resolution_grid`: the resolution for the fishnet with only one length (e.g., 3.6 meter).<br>
 - `resolution_rgb_dsm`: the resolution for the optical and DSM data.<br>
+
+## Results for TSEB-PT:
+- `Canopy_Height.tif`: the map for the canopy height.
+- `Canopy_W_H.tif`: the ratio between canopy width and canopy height.
+- `Fractional_Cover.tif`: the fractional cover of the canopy vegetation.
+- `Temperature_K.tif`: the temperature (one layer) in degree K.
+
 
 ## Acknokledge:<br>
 Thanks for the suggestions and guidence from [Dr. Torres](https://engineering.usu.edu/cee/people/faculty/torres-alfonso)
