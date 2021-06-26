@@ -5,7 +5,7 @@
 - Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
 
 ## Brief introduction:<br>
-- This python script is used for the AggieAir-image processing to support the TSEB-PT model. Details about the AggieAir platform can refer https://uwrl.usu.edu/aggieair/, and details about the TSEB-PT model can refer this repository: https://github.com/hectornieto/pyTSEB.
+- This python script is used for the [AggieAir](https://uwrl.usu.edu/aggieair/)-image processing to support the [TSEB-PT](https://github.com/hectornieto/pyTSEB) model.
 - This repository can be used for the user who has high-resolution data, including red-band optical image, near-infrared-band optical image, DSM image, thermal image, and LAI image (map). The results contain the image to run the TSEB-PT model.
 - This repository is not written in a python function since the some results from some cells can help researchers to find more information, and it is easier for users to debug when apply this script for new research objectives.
 
@@ -42,8 +42,7 @@ These involved python functions are used to extract information from the corresp
 Thanks for the suggestions and guidence from [Dr. Torres](https://engineering.usu.edu/cee/people/faculty/torres-alfonso)
 
 ## Citation:<br>
-Please cite the papers below when you are using this script.
-- [Evapotranspiration partitioning assessment using a machine-learning-based leaf area index and the two-source energy balance model with sUAV information](https://www.researchgate.net/publication/350820947_Evapotranspiration_partitioning_assessment_using_a_machine-learning-based_leaf_area_index_and_the_two-source_energy_balance_model_with_sUAV_information)
-- Vine scale LAI estimation using multi-seasonal multi-spectral, thermal, and elevation sUAV information and machine learning across California (Pending)
+Please cite the paper below when you are using this script.<br>
+[Evapotranspiration partitioning assessment using a machine-learning-based leaf area index and the two-source energy balance model with sUAV information](https://www.researchgate.net/publication/350820947_Evapotranspiration_partitioning_assessment_using_a_machine-learning-based_leaf_area_index_and_the_two-source_energy_balance_model_with_sUAV_information)
 
 
