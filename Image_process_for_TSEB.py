@@ -18,18 +18,18 @@ help(TellExtent)
 
 # 1. Inputs info
 # raw data is 0.1 meter by 0.1 meter resolution
-file_grids = r'D:\Project_ET_Partitioning\1_TSEB_ET\5_FishNet\RIP\Fish_RIP_180805_1044_760.shp'
-file_LAI = r'D:\Project_ET_Partitioning\1_TSEB_ET\3_LAI_3.6m\LAI_RIP_180805_1044_760.tif'
-file_RGBN = r'D:\Project_ET_Partitioning\1_TSEB_ET\7_Images_For_TSEB\RIP_180805_1044_760\RGB.tif'
-file_DSM = r'D:\Project_ET_Partitioning\1_TSEB_ET\7_Images_For_TSEB\RIP_180805_1044_760\DSM.tif'
-file_tmp = r'D:\Project_ET_Partitioning\1_TSEB_ET\7_Images_For_TSEB\RIP_180805_1044_760\Thermal.tif'
+file_grids = r'...\Fish_RIP_180806_1041_720.shp'
+file_LAI = r'...\LAI_RIP_180806_1041_720.tif'
+file_RGBN = r'...\RGB.tif'
+file_DSM = r'...\DSM.tif'
+file_tmp = r'...\Thermal.tif'
 
-folder_output = r'D:\Project_ET_Partitioning\1_TSEB_ET\7_Images_For_TSEB\RIP_180805_1044_760'
+folder_output = r'...\NewFolderForSaving'
 FolderCreater(folder_output)
 
 # fixed parameters
 [band_R, band_G, band_B, band_N] = [0, 1, 2, 3]
-threshold_veg, threshold_soil, threshold_grid, resolution_rgb_dsm, resolution_grid = 0.62, 0.45, 3.6, 0.1, 3.6
+threshold_veg, threshold_soil, threshold_veg_height, threshold_grid, resolution_rgb_dsm, resolution_grid, resolution_tmp = 0.62, 0.45, 1.4, 3.6, 0.1, 3.6, 0.6
 threshold_thermal_upscale_ratio = "6"
 extent_LAI = TellExtent(file_LAI)
 
@@ -141,11 +141,17 @@ extent_tmp = TellExtent(file_tmp)
 # upscale temperature
 raster_tmp = (raster_tmp**2)**2
 WriteTiffData(folder_output, "Tmp_Energy", tmp_dims[0], tmp_dims[1], raster_tmp, tmp_img_geo, tmp_img_prj)
+# resize the temperature image by "resample"
+cellsize = str(resolution_tmp)+" "+str(resolution_tmp)
+arcpy.Resample_management(in_raster=folder_output + "\\Tmp_Energy.tif", 
+                          out_raster=folder_output + "\\Tmp_Energy_res.tif", 
+                          cell_size=cellsize, 
+                          resampling_type="BILINEAR")
 # Align the image
 tmp_energy_alined_name = "Tmp_Energy_Alined.tif"
-arcpy.Clip_management(in_raster=folder_output + "//" + "Tmp_Energy.tif", 
+arcpy.Clip_management(in_raster=folder_output + "\\" + "Tmp_Energy_res.tif", 
                       rectangle=extent_LAI, 
-                      out_raster=folder_output + "//" + tmp_energy_alined_name, 
+                      out_raster=folder_output + "\\" + tmp_energy_alined_name, 
                       in_template_dataset=file_LAI, 
                       nodata_value="-3.402823e+38", 
                       clipping_geometry="NONE", 
@@ -164,3 +170,14 @@ raster_tmp_k = raster_tmp_k + 273.15
 extent_tmp = TellExtent(folder_output + "\\tmp_energy_alined_aggregate.tif")
 # write the array as image
 WriteTiffData(folder_output, "Temperature_K", tmp_dims[0], tmp_dims[1], raster_tmp_k, tmp_img_geo, tmp_img_prj)
+
+# 8. Check the dimension of the outputs
+# Dimension for different images should be the same
+raster_1 = arcpy.RasterToNumPyArray(folder_output + "//Fractional_Cover.tif", nodata_to_value=-9999)
+print("Dimension of the fractional cover:",raster_1.shape)
+raster_2 = arcpy.RasterToNumPyArray(folder_output + "//Canopy_Height.tif", nodata_to_value=-9999)
+print("Dimension of the canopy height:",raster_2.shape)
+raster_3 = arcpy.RasterToNumPyArray(folder_output + "//Canopy_W_H.tif", nodata_to_value=-9999)
+print("Dimension of the canopy height:",raster_3.shape)
+raster_4 = arcpy.RasterToNumPyArray(folder_output + "//Temperature_K.tif", nodata_to_value=-9999)
+print("Dimension of the canopy height:",raster_4.shape)
