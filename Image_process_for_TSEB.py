@@ -29,7 +29,8 @@ FolderCreater(folder_output)
 
 # fixed parameters
 [band_R, band_G, band_B, band_N] = [0, 1, 2, 3]
-threshold_veg, threshold_soil, threshold_grid, threshold_rgb_dsm, threshold_thermal_upscale_ratio, resolution_grid = 0.62, 0.45, 3.6, 0.1, "6", 3.6
+threshold_veg, threshold_soil, threshold_grid, resolution_rgb_dsm, resolution_grid = 0.62, 0.45, 3.6, 0.1, 3.6
+threshold_thermal_upscale_ratio = "6"
 extent_LAI = TellExtent(file_LAI)
 
 # 2. Generate R, G, B, NIR, and DSM images
