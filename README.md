@@ -29,7 +29,7 @@ These involved python functions are used to extract information from the corresp
 - `threshold_veg_height`: the shortest height of the vegetation (vine-canopy height for my case).<br>
 - `threshold_thermal_upscale_ratio`: the ratio between the square of the LAI pixel and the square of the thermal pixel, in string format. It is "6" for my case. 
 - `resolution_grid`: the resolution for the fishnet with only one length (e.g., 3.6 meter).<br>
-- `resolution_rgb_dsm`: the resolution for the optical and DSM data.<br>
+- `resolution_rgb_dsm`: the resolution for the optical and DSM data (e.g., 0.1 meter).<br>
 
 ## Results for TSEB-PT:
 - `Canopy_Height.tif`: the map for the canopy height.
