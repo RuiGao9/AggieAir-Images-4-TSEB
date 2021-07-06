@@ -6,6 +6,8 @@ from matplotlib import pyplot as plt
 # Modify the path below accordingly
 %run ...\CanopyHeight_Vine.py
 help(CanopyHeight_Vine)
+%run ...\CanopySoilTemperatureSeparation_Vine.py
+help(CanopySoilTemperatureSeparation_Vine)
 %run ...\TellResolution.py
 help(TellResolution)
 %run ...\TellTheGeoInfo.py
@@ -29,7 +31,7 @@ FolderCreater(folder_output)
 
 # fixed parameters
 [band_R, band_G, band_B, band_N] = [0, 1, 2, 3]
-threshold_veg, threshold_soil, threshold_veg_height, threshold_grid, resolution_rgb_dsm, resolution_grid, resolution_tmp = 0.62, 0.45, 1.4, 3.6, 0.1, 3.6, 0.6
+threshold_veg, threshold_soil, threshold_veg_height, threshold_grid, resolution_rgb_dsm, resolution_grid, resolution_tmp, resolution_tmp_2t = 0.62, 0.45, 1.4, 3.6, 0.1, 3.6, 0.6, 0.1
 threshold_thermal_upscale_ratio = "6"
 extent_LAI = TellExtent(file_LAI)
 
@@ -171,7 +173,29 @@ extent_tmp = TellExtent(folder_output + "\\tmp_energy_alined_aggregate.tif")
 # write the array as image
 WriteTiffData(folder_output, "Temperature_K", tmp_dims[0], tmp_dims[1], raster_tmp_k, tmp_img_geo, tmp_img_prj)
 
-# 8. Check the dimension of the outputs
+# 8. Two-layer temperature
+# resample the 0.6 by 0.6 meter thermal data (energy level) into 0.1 by 0.1 meter thermal data
+arcpy.Resample_management(in_raster=folder_output + "\\Tmp_Energy_Alined.tif", 
+                          out_raster=folder_output + "\\Tmp_Energy_small.tif", 
+                          cell_size=str(resolution_tmp_2t)+" "+str(resolution_tmp_2t),
+                          resampling_type="BILINEAR")
+# prepare it ready as thermal data in degree C
+# get geo-info from the resampled image
+(res_x,res_y) = TellResolution(folder_output + "\\Tmp_Energy_small.tif")
+[tmp_dims,tmp_img_geo,tmp_img_prj] = TellTheGeoInfo(folder_output + "\\Tmp_Energy_small.tif")
+extent_tmp = TellExtent(folder_output + "\\Tmp_Energy_small.tif")
+# downscale the array: from energy to the unit in degree C
+raster_tmp_scale = arcpy.RasterToNumPyArray(folder_output + "\\Tmp_Energy_small.tif", nodata_to_value=np.nan)
+raster_tmp_scale = np.sqrt(np.sqrt(raster_tmp_scale))
+raster_tmp_scale = raster_tmp_scale
+# write the array as an image in degree C
+WriteTiffData(folder_output, "Temperature_C", tmp_dims[0], tmp_dims[1], raster_tmp_scale, tmp_img_geo, tmp_img_prj)
+# run the temperature-separation function to get the result
+CanopySoilTemperatureSeparation_Vine(file_LAI, folder_output+"\\Red.tif", folder_output+"\\NIR.tif", folder_output + "\\Temperature_C.tif",
+                                     np.nan, threshold_veg, threshold_soil,
+                                     folder_output, "Temperature_2L_K.tif")
+
+# 9. Check the dimension of the outputs
 # Dimension for different images should be the same
 raster_1 = arcpy.RasterToNumPyArray(folder_output + "//Fractional_Cover.tif", nodata_to_value=-9999)
 print("Dimension of the fractional cover:",raster_1.shape)
@@ -181,3 +205,5 @@ raster_3 = arcpy.RasterToNumPyArray(folder_output + "//Canopy_W_H.tif", nodata_t
 print("Dimension of the canopy height:",raster_3.shape)
 raster_4 = arcpy.RasterToNumPyArray(folder_output + "//Temperature_K.tif", nodata_to_value=-9999)
 print("Dimension of the canopy height:",raster_4.shape)
+raster_5 = arcpy.RasterToNumPyArray(folder_output + "//Temperature_2L_K.tif", nodata_to_value=-9999)
+print("Dimension of the canopy height:",raster_5.shape)
