@@ -1,8 +1,7 @@
 
 # AggieAir-Images-4-TSEB-PT
 ## Contact
-- [Rui Gao](https://github.com/RuiGao92)
-- Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
+[Rui Gao](https://github.com/RuiGao92): Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
 
 ## Brief introduction:<br>
 - This python script is used for the [AggieAir](https://uwrl.usu.edu/aggieair/)-image processing to support the [TSEB-PT](https://github.com/hectornieto/pyTSEB) model.
