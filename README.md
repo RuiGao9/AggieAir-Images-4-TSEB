@@ -43,7 +43,7 @@ These involved python functions are used to extract information from the corresp
 Thanks for the suggestions and guidence from [Dr. Torres](https://engineering.usu.edu/cee/people/faculty/torres-alfonso)
 
 ## Citation:<br>
-Please cite the paper below when you are using this script.<br>
+Please cite the paper below when you are using this script for your paper work.<br>
 [Evapotranspiration partitioning assessment using a machine-learning-based leaf area index and the two-source energy balance model with sUAV information](https://www.researchgate.net/publication/350820947_Evapotranspiration_partitioning_assessment_using_a_machine-learning-based_leaf_area_index_and_the_two-source_energy_balance_model_with_sUAV_information)
 
 
