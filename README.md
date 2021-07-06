@@ -1,8 +1,7 @@
 
 # AggieAir-Images-4-TSEB-PT
 ## Contact
-- [Rui Gao](https://github.com/RuiGao92)
-- Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
+[Rui Gao](https://github.com/RuiGao92): Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
 
 ## Brief introduction:<br>
 - This python script is used for the [AggieAir](https://uwrl.usu.edu/aggieair/)-image processing to support the [TSEB-PT](https://github.com/hectornieto/pyTSEB) model.
@@ -12,6 +11,7 @@
 ## Involved python functions:
 These involved python functions are used to extract information from the corresponding inputs. They could be found in other repositories in my GitHub. Details for each function can be found there.
 - `CanopyHeight_Vine`: [Vine_Info_Extraction]| canopy height at a subfield scale is generated at the end as one image.
+- `CanopySoilTemperatureSeparation_Vine`: [Vine_Info_Extraction]| canopy and soil temperature (and also the correlation coefficient between NDVI and temperature) at a subfield scale is generated at the end as one image.
 - `TellResolution`: [Rui_Python_Functions_Package]| resolution (2 values) is generated.
 - `TellTheGeoInfo`: [Rui_Python_Functions_Package]| (1) dimension, (2) geographic information, and (3) projection information of the input image are generated. 
 - `FolderCreater`: [Rui_Python_Functions_Package]| a python function used to generated a folder.
@@ -31,6 +31,7 @@ These involved python functions are used to extract information from the corresp
 - `resolution_grid`: the resolution for the fishnet with only one length (e.g., 3.6 meter).<br>
 - `resolution_rgb_dsm`: the resolution for the optical and DSM data (e.g., 0.1 meter).<br>
 - `resolution_tmp`: the desired resolution of the temperature image (e.g., 0.6 meter).
+- `resolution_tmp_2t`: the desired resolution for the mid-temperature product to get the separated temperature (canopy and soil) for TSEB-2T model.
 
 ## Results for TSEB-PT:
 - `Canopy_Height.tif`: the map for the canopy height.
@@ -38,12 +39,16 @@ These involved python functions are used to extract information from the corresp
 - `Fractional_Cover.tif`: the fractional cover of the canopy vegetation.
 - `Temperature_K.tif`: the temperature (one layer) in degree K.
 
+## Results for TSEB-2T:
+Except the result called "Temperature_K.tif", others can also be used for TSEB-2T model.
+- `Temperature_2L_K.tif`: canopy (layer 1), soil temperature in degree K (layer 2), and correlation coefficient between NDVI and temperature (layer 3) as one image is generated.
+
 
 ## Acknokledge:<br>
 Thanks for the suggestions and guidence from [Dr. Torres](https://engineering.usu.edu/cee/people/faculty/torres-alfonso)
 
 ## Citation:<br>
-Please cite the paper below when you are using this script.<br>
+Please cite the paper below when you are using this script for your paper work.<br>
 [Evapotranspiration partitioning assessment using a machine-learning-based leaf area index and the two-source energy balance model with sUAV information](https://www.researchgate.net/publication/350820947_Evapotranspiration_partitioning_assessment_using_a_machine-learning-based_leaf_area_index_and_the_two-source_energy_balance_model_with_sUAV_information)
 
 
