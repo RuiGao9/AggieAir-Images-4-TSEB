@@ -19,17 +19,22 @@ help(WriteTiffData)
 help(TellExtent)
 
 # 1. Inputs info
-# raw data is 0.1 meter by 0.1 meter resolution
+# fishnet: domain size is 3.6 meter by 3.6 meter in this case
 file_grids = r'...\Fish_RIP_180806_1041_720.shp'
+# LAI map: resolution for this map is 3.6 meter by 3.6 meter in this case
 file_LAI = r'...\LAI_RIP_180806_1041_720.tif'
+# Optical image containing R, G, B, and NIR: resolution is 0.1 meter by 0.1 meter
 file_RGBN = r'...\RGB.tif'
+# DSM data: resolution is 0.1 meter by 0.1 meter
 file_DSM = r'...\DSM.tif'
+# raw data gained from the AggieAir platform, and a constant resolution for this image is not required
 file_tmp = r'...\Thermal.tif'
 
+# create a folder to save all the results (including mid-products)
 folder_output = r'...\NewFolderForSaving'
 FolderCreater(folder_output)
 
-# fixed parameters
+# parameters (some of them need to be adjusted accordingly, e.g., threshold_veg and threshold_soil)
 [band_R, band_G, band_B, band_N] = [0, 1, 2, 3]
 threshold_veg, threshold_soil, threshold_veg_height, threshold_grid, resolution_rgb_dsm, resolution_grid, resolution_tmp, resolution_tmp_2t = 0.62, 0.45, 1.4, 3.6, 0.1, 3.6, 0.6, 0.1
 threshold_thermal_upscale_ratio = "6"
