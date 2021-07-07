@@ -1,5 +1,5 @@
 
-# AggieAir-Images-4-TSEB-PT
+# AggieAir-Images-4-TSEB-Models
 ## Contact
 [Rui Gao](https://github.com/RuiGao92): Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
 
