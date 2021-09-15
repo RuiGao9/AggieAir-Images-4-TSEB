@@ -4,7 +4,7 @@
 [Rui Gao](https://github.com/RuiGao92): Rui.Gao@usu.edu | Rui.Gao@aggiemail.usu.edu
 
 ## Brief introduction:<br>
-- This python script is used for the [AggieAir](https://uwrl.usu.edu/aggieair/)-image processing to support the [TSEB-PT](https://github.com/hectornieto/pyTSEB) model.
+- This python script is used for the [AggieAir](https://uwrl.usu.edu/aggieair/)-image processing to support the [TSEB](https://github.com/hectornieto/pyTSEB) model.
 - This repository can be used for the user who has high-resolution data, including red-band optical image, near-infrared-band optical image, DSM image, thermal image, and LAI image (map). The results contain the image to run the TSEB-PT model.
 - This repository is not written in a python function since the some results from some cells can help researchers to find more information, and it is easier for users to debug when apply this script for new research objectives.
 
